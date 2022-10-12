@@ -10,7 +10,7 @@ namespace AddressBook
     {
         static void Main(string[] args)
         {
-            //UC-4 Delete contact using first name.
+            //UC-5 Program to Add multiple person in a Address Book
 
             Console.WriteLine("Welcome to Address Book");
 
