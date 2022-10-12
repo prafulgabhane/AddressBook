@@ -16,11 +16,12 @@ namespace AddressBook
             Contacts contacts = new Contacts();
             int choice1 = 0;
             Console.WriteLine("Input any one operation you want to perform: ");
-            Console.WriteLine("1.Add Person\n2.Edit Person");
+            Console.WriteLine("1.Add Person\n2.Edit Person\n3.Delete Person");
             choice1 = Convert.ToInt32(Console.ReadLine());
 
             switch (choice1)
             {
+                // Case 1 for add 
                 case 1:
                     Console.WriteLine("Enter First Name:");
                     contacts.First_name = Console.ReadLine();
@@ -44,6 +45,7 @@ namespace AddressBook
 
                     break;
 
+                // Case 2 for edit 
                 case 2:
                     string name;
                     int choice = 0;
@@ -113,9 +115,28 @@ namespace AddressBook
                         }
                     }
                     break;
+
+                 // Case 3 for delete ( additional feature UC-4 )
+                case 3: 
+                    string name1;
+                    Console.WriteLine("Enter Name you want to remove: ");
+                    name1 = Console.ReadLine();
+                    for (int i = 0; i < People.Count; i++)
+                    {
+                        Contacts contact = People[i];
+                        //PrintPerson(contact);
+
+                        if (contact.First_name == name1)
+                        {
+                            People.RemoveAt(i);
+                            Console.WriteLine(contact.First_name + " is Removed!..");
+                        }
+                    }
+                    break;
             }
 
         }
+        // method to preview or display information
         private static void PrintPerson(Contacts person)
         {
             Console.WriteLine("-------------------------------------------");
@@ -131,6 +152,7 @@ namespace AddressBook
         }
         public static void ListPeople()
         {
+            // here using foreach to execute set of statements multiple times depending on the result of a condition to be evaluated.
             foreach (var contacts in People)
             {
                 PrintPerson(contacts);

@@ -10,9 +10,9 @@ namespace AddressBook
     {
         static void Main(string[] args)
         {
-            //UC-3 Ability to edit their existing contact details using their names
-            Console.WriteLine("Welcome to Address Book");
+            //UC-4 Delete contact using first name.
 
+            Console.WriteLine("Welcome to Address Book");
 
             int choice = 0;
             while (choice != 2)
