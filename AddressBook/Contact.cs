@@ -8,15 +8,17 @@ namespace AddressBook
 {
     public class Contacts
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string First_name { get; set; }
+        public string Last_name { get; set; }
+
         public string Address { get; set; }
-        public long Phonenumbe { get; set; }
-        public string Email { get; set; }
-        public string City { get; set; }
         public string State { get; set; }
-        public long ZipCode { get; set; }
 
+        public string City { get; set; }
 
+        public int Zip { get; set; }
+        public long Phone_number { get; set; }
+
+        public string Email { get; set; }
     }
 }

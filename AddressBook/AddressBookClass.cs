@@ -1,49 +1,140 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AddressBook
 {
-    public class AddressBookClass
+    public class AddressBook
     {
-        List<Contacts> add = new List<Contacts>();
-        public void AddContact()
-        {
-            Contacts con = new Contacts();
-            Console.WriteLine("Enter First Name");
-            con.FirstName = Console.ReadLine();
-            Console.WriteLine("Enter Last Name");
-            con.LastName = Console.ReadLine();
-            Console.WriteLine("Enter Address");
-            con.Address = Console.ReadLine();
-            Console.WriteLine("Enter City");
-            con.City = Console.ReadLine();
-            Console.WriteLine("Enter State");
-            con.State = Console.ReadLine();
-            Console.WriteLine("Enter Zip Code");
-            con.ZipCode = long.Parse(Console.ReadLine());
-            Console.WriteLine("Enter Phone Number");
-            con.Phonenumbe = long.Parse(Console.ReadLine());
+        public static List<Contacts> People = new List<Contacts>();
 
-            add.Add(con);
-        }
-
-        public void Display()
+        public static void AddPerson()
         {
-            foreach (Contacts data in add)
+            Contacts contacts = new Contacts();
+            int choice1 = 0;
+            Console.WriteLine("Input any one operation you want to perform: ");
+            Console.WriteLine("1.Add Person\n2.Edit Person \n3.Remove Person ");
+            choice1 = Convert.ToInt32(Console.ReadLine());
+
+            switch (choice1)
             {
-                Console.WriteLine("Firstname:" + data.FirstName);
-                Console.WriteLine("Lastname:" + data.LastName);
-                Console.WriteLine("Address:" + data.Address);
-                Console.WriteLine("city:" + data.City);
-                Console.WriteLine("state:" + data.State);
-                Console.WriteLine("Zipcode:" + data.ZipCode);
-                Console.WriteLine("PhoneNumber:" + data.Phonenumbe);
+                case 1:
+                    Console.WriteLine("Enter First Name:");
+                    contacts.First_name = Console.ReadLine();
+                    Console.WriteLine("Enter Last Name:");
+                    contacts.Last_name = Console.ReadLine();
+                    Console.WriteLine("Enter Address:");
+                    contacts.Address = Console.ReadLine();
+                    Console.WriteLine("Enter State:");
+                    contacts.State = Console.ReadLine();
+                    Console.WriteLine("Enter City:");
+                    contacts.City = Console.ReadLine();
+                    Console.WriteLine("Enter Zip:");
+                    contacts.Zip = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Enter Phone Number:");
+                    contacts.Phone_number = Convert.ToInt64(Console.ReadLine());
+                    Console.WriteLine("Enter Email:");
+                    contacts.Email = Console.ReadLine();
+                    
+                    People.Add(contacts);
+                    Console.WriteLine("Contact Added Successfully:");
 
+                    break;
+
+                case 2:
+                    string name;
+                    int choice = 0;
+                    Console.WriteLine("Enter First Name of Contact to edit: ");
+                    name = Console.ReadLine();
+                    for (int i = 0; i < People.Count; i++)
+                    {
+                        Contacts contact = People[i];
+                        Console.WriteLine("Info of selected Person");
+                        //showing person's info to user for clarification
+                        PrintPerson(contact);
+                        //Console.WriteLine("Press Enter");
+                        //Console.ReadLine();
+
+
+                        if (contact.First_name == name)
+                        {                          
+                            Console.WriteLine("Now choose what you want to edit");
+
+                            Console.WriteLine("-------------------------------------------");
+                            Console.WriteLine("1.First Name\n2.Last Name\n3.Address\n4.State\n5.City\n6.Zip\n7.Phone Number\n8.Email");
+                            Console.WriteLine("-------------------------------------------");
+                            Console.WriteLine("Input Here: ");
+                            choice = Convert.ToInt32(Console.ReadLine());
+                            switch (choice)
+                            {
+                                case 1:
+                                    Console.WriteLine("Enter First Name:");
+                                    contact.First_name = Console.ReadLine();
+                                    break;
+                                case 2:
+                                    Console.WriteLine("Enter Last Name:");
+                                    contact.Last_name = Console.ReadLine();
+                                    break;
+                                case 3:
+                                    Console.WriteLine("Enter Address:");
+                                    contact.Address = Console.ReadLine();
+                                    break;
+                                case 4:
+                                    Console.WriteLine("Enter State:");
+                                    contact.State = Console.ReadLine();
+                                    break;
+                                case 5:
+                                    Console.WriteLine("Enter City:");
+                                    contact.City = Console.ReadLine();
+                                    break;
+                                case 6:
+                                    Console.WriteLine("Enter Zip:");
+                                    contact.Zip = Convert.ToInt32(Console.ReadLine());
+                                    break;
+                                case 7:
+                                    Console.WriteLine("Enter Phone Number:");
+                                    contact.Phone_number = Convert.ToInt64(Console.ReadLine());
+                                    break;
+                                case 8:
+                                    Console.WriteLine("Enter Email:");
+                                    contact.Email = Console.ReadLine();
+                                    break;
+                                default:
+                                    Console.WriteLine("Enter Valid Number");
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("No match found");
+                        }
+                    }
+                    break;
+            }
+
+        }
+        private static void PrintPerson(Contacts person)
+        {
+            Console.WriteLine("-------------------------------------------");
+            Console.WriteLine("First Name: " + person.First_name);
+            Console.WriteLine("Last Name: " + person.Last_name);
+            Console.WriteLine("Address: " + person.Address);
+            Console.WriteLine("State: " + person.State);
+            Console.WriteLine("City: " + person.City);
+            Console.WriteLine("Zip: " + person.Zip);
+            Console.WriteLine("Phone Number: " + person.Phone_number);
+            Console.WriteLine("Email: " + person.Email);
+            Console.WriteLine("-------------------------------------------");
+        }
+        public static void ListPeople()
+        {
+            foreach (var contacts in People)
+            {
+                PrintPerson(contacts);
             }
         }
-
     }
 }
