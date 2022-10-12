@@ -16,7 +16,7 @@ namespace AddressBook
             Contacts contacts = new Contacts();
             int choice1 = 0;
             Console.WriteLine("Input any one operation you want to perform: ");
-            Console.WriteLine("1.Add Person\n2.Edit Person \n3.Remove Person ");
+            Console.WriteLine("1.Add Person\n2.Edit Person");
             choice1 = Convert.ToInt32(Console.ReadLine());
 
             switch (choice1)
