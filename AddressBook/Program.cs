@@ -1,13 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace AddressBook
 {
     public class Program
     {
-        public static void Main(String[] args)
+        static void Main(string[] args)
         {
-            AddressBookClass add = new AddressBookClass();
-            add.AddContact();
+            //UC-3 Ability to edit their existing contact details using their names
+            Console.WriteLine("Welcome to Address Book");
+
+
+            int choice = 0;
+            while (choice != 2)
+            {
+                Console.WriteLine("1.Perform Operations \n2.Exit");
+                choice = Convert.ToInt32(Console.ReadLine());
+                if (choice != 2)
+                    AddressBook.AddPerson();
+            }
+            AddressBook.ListPeople();
+            Console.WriteLine("Program Ends: Address Book: Press Enter");
+            Console.ReadLine();
+
         }
     }
 }
