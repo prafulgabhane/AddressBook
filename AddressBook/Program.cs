@@ -6,9 +6,8 @@ namespace AddressBook
     {
         public static void Main(String[] args)
         {
-            Console.WriteLine("Welcome to Address Book Program");
-            AddressBookClass createcontact = new AddressBookClass();
-            createcontact.CreateContact();
+            AddressBookClass add = new AddressBookClass();
+            add.AddContact();
         }
     }
 }
