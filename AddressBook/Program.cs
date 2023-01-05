@@ -14,7 +14,7 @@ namespace AddressBook
 
             Console.WriteLine("Welcome to Address Book");
 
-            int choice = 0;
+            int choice = 0; 
             while (choice != 2)
             {
                 Console.WriteLine("1.Perform Operations \n2.Exit");
